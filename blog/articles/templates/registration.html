@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+{% load static %}
+	<link rel="stylesheet" href="{{ STATIC_URL }}/static/articles.css">
+    <title>Регистрация</title>
+  </head>
+  <body>
+    <h1>Регистрация</h1>
+<a href="{% url 'user_login' %}">Авторизация</a> |
+    <a href="{% url 'archive' %}">Список всех статей</a>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}	
+      <button type="submit">Отправить</button>
+    </form>
+    {% if form.errors %}
+    <p>{{ form.errors }}</p>
+    {% endif %}
+    <br>
+    
+  </body>
+</html>
+
+  

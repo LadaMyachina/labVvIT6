@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<link rel="stylesheet" href="{{ STATIC_URL }}/static/articles.css">
+	<title>Вход в систему</title>
+</head>
+<body>
+<h1>Авторизация</h1>
+<a href="{% url 'registration' %}">Регистрация</a> |
+    <a href="{% url 'archive' %}">Список всех статей</a>
+	{% if error %}
+		<p style="color: red">{{ error }}</p>
+	{% endif %}
+	<form method="post">
+		
+		<label for="username">Имя пользователя:</label><br>
+		<input type="text" id="username" name="username"><br><br>
+		<label for="password">Пароль:</label><br>
+		<input type="password" id="password" name="password"><br><br>
+		<input type="submit" value="Войти">
+	</form>
+</body>
+</html>

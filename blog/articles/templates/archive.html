@@ -1,0 +1,28 @@
+<title>«Архив статей»</title>
+{% load static %}
+	<link rel="stylesheet" href="{{ STATIC_URL }}/static/articles.css">
+<body>
+<a href="{% url 'registration' %}">Регистрация</a> |
+<a href="{% url 'user_login' %}">Авторизация</a> |
+    <a href="{% url 'create_post' %}">Создать статью</a>
+<div class="header">
+<img src="http://klubmama.ru/uploads/posts/2022-08/1661638464_20-klubmama-ru-p-maiskii-zhuk-podelka-foto-23.jpg" width="350" height="270"/>
+</div>
+<div class="archive">
+{% for post in posts %}
+<div class="one-post">
+
+<h2 class="post-title">
+<a href="http://127.0.0.1:8000/article/{{post.id}}">{{post.title}}</a>
+</h2>
+
+<div class="article-info">
+<div class="article-author">{{ post.author.username }}</div>
+<div class="article-created- date">{{ post.created_date }}</div>
+</div>
+<p class="article-text">{{ post.get_excerpt }}</p>
+</div>
+{% endfor %}
+
+</div>
+</body>
